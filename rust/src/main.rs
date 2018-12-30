@@ -1,6 +1,5 @@
 extern crate rand;
 
-// use std::{thread, time};
 use rand::{thread_rng, Rng};
 use std::{io::stdin, process::Command, string::String};
 
@@ -14,11 +13,6 @@ fn clear() {
     .or_else(|_| Command::new("clear").status())
     .unwrap();
 }
-
-// fn sleep(millis: u64) {
-//   let ten_millis = time::Duration::from_millis(millis);
-//   thread::sleep(ten_millis);
-// }
 
 fn get_token(player: &u8) -> char {
   return if player == &1 { 'X' } else { '@' };
@@ -134,7 +128,6 @@ fn move_player(board: &Vec<Vec<u8>>, board_cells: &Vec<Cell>) -> Cell {
         continue;
       }
     }
-    println!("{} input", input_char);
 
     print!("\n");
 
@@ -250,6 +243,17 @@ fn print_screen(matrix: &Vec<Vec<u8>>) {
   print_board(matrix);
 }
 
+fn full_board(matrix: &Vec<Vec<u8>>) -> bool {
+  for row in  0..3 {
+    for col in 0..3 {
+      if matrix[row][col] == 0 {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 fn main() {
   // setup
   let mut matrix = vec![vec![0, 0, 0], vec![0, 0, 0], vec![0, 0, 0]];
@@ -263,7 +267,7 @@ fn main() {
   let mut moves = 0;
 
   loop {
-    if user_won || system_won {
+    if user_won || system_won || full_board(&matrix) {
       break;
     }
 
@@ -289,9 +293,9 @@ fn main() {
   }
 
   if !user_won && !system_won {
-    print!("Cat game");
+    println!("Cat game in {} moves", moves);
   } else {
     let msg = if user_won { "You win" } else { "You loose" };
-    print!("{} in {} moves.\n", msg, moves);
+    println!("{} in {} moves.", msg, moves);
   }
 }
