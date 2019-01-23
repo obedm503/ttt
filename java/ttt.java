@@ -237,7 +237,7 @@ class ttt {
     Cell[] boardCells = setupBoard();
     Scanner input = new Scanner(System.in);
 
-    printBoard(matrix);
+    printScreen(matrix);
 
     boolean userWon = false;
     boolean systemWon = false;
