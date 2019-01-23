@@ -5,5 +5,5 @@ tic tac toe in a few languages
 - [x] C
 - [x] Rust
 - [x] Java
+- [x] TypeScript
 - [ ] Go?
-- [ ] TypeScript

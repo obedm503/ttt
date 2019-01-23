@@ -1,3 +1,4 @@
 dist/
 target/
 *.class
+node_modules/
