@@ -243,7 +243,7 @@ fn print_screen(matrix: &Vec<Vec<u8>>) {
   print_board(matrix);
 }
 
-fn full_board(matrix: &Vec<Vec<u8>>) -> bool {
+fn cat_game(matrix: &Vec<Vec<u8>>) -> bool {
   for row in  0..3 {
     for col in 0..3 {
       if matrix[row][col] == 0 {
@@ -267,7 +267,7 @@ fn main() {
   let mut moves = 0;
 
   loop {
-    if user_won || system_won || full_board(&matrix) {
+    if user_won || system_won || cat_game(&matrix) {
       break;
     }
 
