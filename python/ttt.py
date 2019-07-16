@@ -102,7 +102,7 @@ def printBoard(board):
 
             iteration += 1
 
-        print("\n")
+        print()
 
         if rowI < 2:
             for col in range(3):
@@ -116,22 +116,22 @@ def printBoard(board):
 
 def movePlayer(board, boardCells):
     moved = False
-    choice = Cell(0, 0)
+    choice = None
 
     while not moved:
         inputLine = input("Pick a cell (will ignore characters after first).\n")
         cellIndex = int(inputLine) - 1
-        print("\n")
+        print()
 
         if cellIndex < 0 or cellIndex > 8:
-            print("Invalid cell number.\n")
+            print("Invalid cell number.")
             continue
 
         choice = boardCells[cellIndex]
         cell = board[choice.row][choice.col]
         moved = checkFreeCell(board, boardCells, cellIndex)
         if not moved:
-            print("Cell is already taken by " + getToken(cell) + ".\n")
+            print("Cell is already taken by " + getToken(cell) + ".")
 
     return choice
 
@@ -140,7 +140,7 @@ def moveSystem(board, boardCells):
     moved = False
     tries = []
     iteration = 0
-    choice = Cell(0, 0)
+    choice = None
 
     while not moved:
         pick = random.randrange(0, 8)
@@ -158,7 +158,7 @@ def moveSystem(board, boardCells):
 
 def printScreen(board):
     clear()
-    print("Welcome to ttt.\n\n")
+    print("Welcome to ttt.\n")
     printBoard(board)
 
 
@@ -198,8 +198,8 @@ while True:
 
 
 if not userWon and not systemWon:
-    print("Cat game in " + moves + " moves.\n")
+    print("Cat game in " + moves + " moves.")
 else:
     msg = "You win" if userWon else "You loose"
-    print(msg + " in " + str(moves) + " moves.\n")
+    print(msg + " in " + str(moves) + " moves.")
 
